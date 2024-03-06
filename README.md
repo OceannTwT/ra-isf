@@ -2,7 +2,7 @@
 
 This is the official repository of the paper: RA-ISF: Learning to Answer and Understand from Retrieval Augmentation via Iterative Self-Feedback.
 
-![Framework of RA-ISF.](ra-isf/ra-isf.png)
+![Framework of RA-ISF.](ra-isf.png)
 
 # 
 

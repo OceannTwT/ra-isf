@@ -10,4 +10,4 @@ The codebase of RA-ISF integrate iterative question-answering and problem decomp
 
 Compared to other methods, RA-ISF evaluates whether a question can be answered by assessing the model's capabilities and the relevance of the retrieved texts. When it cannot be answered, the problem decomposition module breaks down the original question into sub-questions for re-evaluation. 
 
-We will release the code soon.
+**We will release the code soon.**

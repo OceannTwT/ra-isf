@@ -1,0 +1,175 @@
+# The dataset_info.yaml file contains the information of the datasets used in the experiments.
+alpaca:
+  hf_hub_url: tatsu-lab/alpaca
+  local_path: tatsu-lab/alpaca/alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+alpaca-clean:
+  hf_hub_url: yahma/alpaca-cleaned
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+
+coig:
+  hf_hub_url: BAAI/COIG
+  local_path: /home/robin/prompt_data//COIG/train_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+dolly-15k:
+  hf_hub_url: databricks/databricks-dolly-15k
+  local_path: databricks/databricks-dolly-15k
+  dataset_format: dolly
+  multi_turn: False
+
+cvalues_comparison_train:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/CValues-Comparison/train_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+cvalues_comparison_test:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/CValues-Comparison/test_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+guanaco:
+  hf_hub_url: JosephusCheung/GuanacoDataset
+  local_path: ''
+  dataset_format: guanaco
+  multi_turn: False
+
+hh-rlhf:
+  hf_hub_url: Anthropic/hh-rlhf
+  local_path: ''
+  dataset_format: hh-rlhf
+  multi_turn: False
+
+huatuogpt:
+  hf_hub_url: FreedomIntelligence/HuatuoGPT-sft-data-v1
+  local_path: /home/robin/prompt_data/HuatuoGPT-sft-data-v1/HuatuoGPT_alpaca.jsonl
+  dataset_format: alpaca
+  multi_turn: False
+
+openassistant-guanaco:
+  hf_hub_url: timdettmers/openassistant-guanaco
+  local_path: /home/robin/prompt_data/timdettmers/openassistant-guanaco
+  dataset_format: alpaca
+  multi_turn: False
+
+olcc:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/olcc/olcc_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+100PoisonMpts:
+  hf_hub_url: 'damo/100PoisonMpts'
+  local_path: /home/robin/prompt_data/100PoisonMpts/train.jsonl
+  dataset_format: 100PoisonMpts
+  multi_turn: False
+
+safety_prompt_part1:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/Safety-Prompts/attack_scenarios_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+safety_prompt_part2:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/Safety-Prompts/safety_scenarios_alpaca.json
+  dataset_format: alpaca
+  multi_turn: False
+
+# Belle Group
+belle_0.5m:
+  hf_hub_url: BelleGroup/train_0.5M_CN
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+
+belle_1m:
+  hf_hub_url: BelleGroup/train_1M_CN
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+
+belle_2m:
+  hf_hub_url: BelleGroup/train_2M_CN
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+
+belle_dialog:
+  hf_hub_url: BelleGroup/generated_chat_0.4M
+  local_path: ''
+  dataset_format: belle_dialog
+  multi_turn: False
+
+belle_math:
+  hf_hub_url: BelleGroup/school_math_0.25M
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+
+belle_multiturn:
+  hf_hub_url: BelleGroup/multi_turn_0.5M
+  local_path: ''
+  dataset_format: belle_multiturn
+  multi_turn: True
+  columns:
+    prompt: instruction
+    query: ''
+    response: output
+    history: history
+
+# firefly
+firefly:
+  hf_hub_url: YeungNLP/firefly-train-1.1M
+  local_path: ''
+  dataset_format: alpaca
+  multi_turn: False
+  columns:
+    prompt: input
+    query: ''
+    response: target
+    history: ''
+
+# CodeAlpaca
+codealpaca:
+  hf_hub_url: sahil2801/CodeAlpaca-20k
+  local_path: ''
+  dataset_format: codealpaca
+  multi_turn: False
+
+# alpacacot
+alpaca_cot:
+  hf_hub_url: QingyiSi/Alpaca-CoT
+  local_path: ''
+  multi_turn: False
+
+webqa:
+  hf_hub_url: suolyer/webqa
+  local_path: ''
+  dataset_format: webqa
+  multi_turn: False
+  columns:
+    prompt: input
+    query: ''
+    response: output
+    history: ''
+
+# mutli-turn datasets
+evol_instruct:
+  hf_hub_url: WizardLM/WizardLM_evol_instruct_V2_196k
+  local_path: WizardLM/WizardLM_evol_instruct_V2_196k/WizardLM_evol_instruct_V2_143k.json
+  dataset_format: sharegpt
+  multi_turn: True
+
+share_gpt:
+  hf_hub_url: ''
+  local_path: /home/robin/prompt_data/sharegpt/sharegpt_split.json
+  dataset_format: sharegpt
+  multi_turn: True

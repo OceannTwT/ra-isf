@@ -1,0 +1,37 @@
+python train_qlora.py \
+    --model_name_or_path decapoda-research/llama-7b-hf \
+    --dataset_cfg ./data/alpaca_zh_pcyn.yaml \
+    --output_dir ./work_dir/alpaca_zh-baichuan-7b \
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 8 \
+    --evaluation_strategy steps \
+    --eval_steps 1000 \
+    --save_strategy steps \
+    --save_total_limit 10 \
+    --save_steps 1000 \
+    --logging_strategy steps \
+    --logging_steps 5 \
+    --learning_rate 0.0002 \
+    --warmup_ratio 0.03 \
+    --weight_decay 0.0 \
+    --lr_scheduler_type constant \
+    --adam_beta2 0.999 \
+    --max_grad_norm 0.3 \
+    --lora_r 64 \
+    --lora_alpha 16 \
+    --lora_dropout 0.1 \
+    --double_quant \
+    --quant_type nf4 \
+    --fp16 \
+    --bits 4 \
+    --model_max_length 1024 \
+    --gradient_checkpointing \
+    --trust_remote_code True \
+    --use_auth_token True \
+    --do_train \
+    --do_eval \
+    --sample_generate \
+    --data_seed 42 \
+    --seed 0

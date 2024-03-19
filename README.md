@@ -14,9 +14,7 @@ This is the official repository of the paper: [RA-ISF: Learning to Answer and Un
 
 🔥 We have released the version 1.0 for llama2_13b base model.
 
-## 🛠️ How to Use
-
-### Step 0
+## Step 0 Installation Enviorment
 
 Update your environment for the required dependency. 
 
@@ -26,11 +24,11 @@ conda activate raisf
 pip install -r requirement.txt
 ```
 
-### Step 1 Generate Sub-modules
+## Step 1 Generate Sub-modules
 
 Our approach involves training three sub-modules, each addressing self-awareness, article relevance, and problem decomposition respectively.
 
-#### Collect datasets for Self-Knowledge
+### Collect datasets for Self-Knowledge
 
 We provide a number of data to ask LLMs, using Openai API to generate final result. For incorrect result, we mark as "unknow".
 For correct one, we mark as "know", the data format are formulated as:
@@ -42,7 +40,7 @@ For correct one, we mark as "know", the data format are formulated as:
 ```
 
 
-#### Collect datasets for Passage-Relevance
+### Collect datasets for Passage-Relevance
 
 We provide a series of question-passage pairs and prompt the LLM to assess the relevance of the articles. Relevant content is labeled as "relevance," while irrelevant content is labeled as "irrelevance." the data format are formulated as:
 
@@ -53,7 +51,7 @@ We provide a series of question-passage pairs and prompt the LLM to assess the r
 ```
 
 
-#### Collect datasets for Task-Decomposition
+### Collect datasets for Task-Decomposition
 
 We provided a series of questions and asked LLMs to generate sub-questions for the corresponding questions. Meanwhile, some datasets have already provided decompositions of sub-questions, and we have incorporated this correspondence into the training data. the data format are formulated as：
 
@@ -61,7 +59,7 @@ We provided a series of questions and asked LLMs to generate sub-questions for t
 {"question": "{question}", "answer": "{"query": ["sub_q1", "sub_q2"]}"}
 ```
 
-#### Training Llama2-7b Sub-modules
+### Training Llama2-7b Sub-modules
 
 For Llama2 model, we adopt [Efficient-Tuning-LLMs](https://github.com/jianzhnie/Efficient-Tuning-LLMs/tree/main) repo for training. For more details, refer to [source/model/llama2](./source/model/llama2)
 
@@ -92,7 +90,7 @@ CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 train.py \
     --deepspeed "scripts/ds_config/ds_config_zero3_auto.json"
 ```
 
-#### Training Flan-T5-XL(780M) Sub-modules
+### Training Flan-T5-XL(780M) Sub-modules
 
 When we utilize Flan-T5 as submodels, leveraging the three datasets we've collected, we train using the following script:
 
@@ -107,11 +105,11 @@ python flan_seq2seq.py  --epochs {epochs} \
 Remember to change your dataset_id on [utils.py](./source/model/flan-t5/utils.py)
 
 
-### Step 2 Setting Retriever
+## Step 2 Setting Retriever
 
 We use [Contriever](https://github.com/facebookresearch/contriever) to retrieve documents.
 
-#### Download data
+### Download data
 Download the preprocessed passage data and the generated passaged ([Contriever-MSMARCO](https://huggingface.co/facebook/contriever-msmarco)). 
 ```
 mkdir data/retrieval_wiki
@@ -120,7 +118,7 @@ wget https://dl.fbaipublicfiles.com/dpr/wikipedia_split/psgs_w100.tsv.gz
 wget https://dl.fbaipublicfiles.com/contriever/embeddings/contriever-msmarco/wikipedia_embeddings.tar
 ```
 
-### Step 3 Processing Retrieval Augmented Iterative Self-Feedback
+## Step 3 Processing Retrieval Augmented Iterative Self-Feedback
 
 Modify the `datapath` ,`engine`and `model_path` in [config.py](./config.py) and [contriever_config.py](./contriever_config.py) to match your actual paths of the used datasets. Refer to these file for more config details.
 
@@ -140,7 +138,7 @@ python main.py --engine "llama2-13b"
 
 ## Evaluation results
 
-![result.png](./result.pngpng)
+![result.png](./evaluation.png)
 
 Results showed that our method achieved SOTA on four out of five datasets, with an average improvement of +1.9 compared to the best-performing method.
 

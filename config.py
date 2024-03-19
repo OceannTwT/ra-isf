@@ -11,15 +11,7 @@ def parse_arguments():
         "--temperature", type=float, default=0, help=""
     )
     parser.add_argument(
-        '--dataset', default='gsm8k',
-        help="dataset",
-        choices=["2WikimhQA", "GSM8K", "hotpotQA", "logiQA", "AddSub", "SingleEq", "CommonsenseQA", "StrategyQA"]
-    )
-    parser.add_argument(
         "--type_list_file", default="./src/format/entity_type_list.txt", type=str, help='file path'
-    )
-    parser.add_argument(
-        "--datapath", default=None, type=str, help='file path'
     )
     parser.add_argument(
         "--prompt_id", default='324', help='string'
@@ -28,7 +20,7 @@ def parse_arguments():
         "--infer_num", default='5', help='string'
     )
     parser.add_argument(
-        "--engine", default='llama2-7b', help="llama2-7b, llama2-13b, gpt-3.5",
+        "--engine", default='llama2-13b', help="llama2-7b, llama2-13b, gpt-3.5",
         choices=["llama2-7b", "llama2-13b", "gpt-3.5"]
     )
     parser.add_argument(

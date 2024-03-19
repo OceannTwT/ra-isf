@@ -139,12 +139,12 @@ python main.py --engine "llama2-13b"
 ## 📊Evaluation results
 
 <p align="center">
-  <img src="https://github.com/OceannTwT/ra-isf/blob/main/evaluation.png" alt="Overall Evaluation on RA-ISF" style="width:60%">
+  <img src="https://github.com/OceannTwT/ra-isf/blob/main/evaluation.png" alt="Overall Evaluation on RA-ISF" style="width:90%">
   <br>
   <em>Overall Evaluation on RA-ISF.</em>
 </p>
 
-![result.png](./evaluation.png)
+<!-- ![result.png](./evaluation.png) -->
 
 Results showed that our method achieved SOTA on four out of five datasets, with an average improvement of +1.9 compared to the best-performing method.
 

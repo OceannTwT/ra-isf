@@ -18,6 +18,8 @@
 
 # Efficient Finetuning of Quantized LLMs  --- 低资源的大语言模型量化训练/部署方案
 
+### We use this repo to fine-tune submodel & base model of RA-ISF, so watch in details for finetuning Llama2.
+
 
 <div align="center">
 

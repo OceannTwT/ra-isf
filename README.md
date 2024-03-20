@@ -152,12 +152,11 @@ Results showed that our method achieved SOTA on four out of five datasets, with 
 
 If you use this codebase, or RA-ISF inspires your work, we would greatly appreciate it if you could star the repository and cite it using the following BibTeX entry:
 
-```bibtex 
-@misc{liu2024raisf,
-      title={RA-ISF: Learning to Answer and Understand from Retrieval Augmentation via Iterative Self-Feedback}, 
-      author={Yanming Liu and Xinyue Peng and Xuhong Zhang and Weihao Liu and Jianwei Yin and Jiannan Cao and Tianyu Du},
-      year={2024},
-      eprint={2403.06840},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+```bibtex
+
+@article{liu2024ra,
+  title={RA-ISF: Learning to Answer and Understand from Retrieval Augmentation via Iterative Self-Feedback},
+  author={Liu, Yanming and Peng, Xinyue and Zhang, Xuhong and Liu, Weihao and Yin, Jianwei and Cao, Jiannan and Du, Tianyu},
+  journal={arXiv preprint arXiv:2403.06840},
+  year={2024}
 }

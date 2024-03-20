@@ -90,7 +90,7 @@ CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 train.py \
     --deepspeed "scripts/ds_config/ds_config_zero3_auto.json"
 ```
 
-### 🔹Training Flan-T5-XL(780M) Sub-modules
+### 🔹Training Flan-T5-Large(780M) Sub-modules
 
 When we utilize Flan-T5 as submodels, leveraging the three datasets we've collected, we train using the following script:
 

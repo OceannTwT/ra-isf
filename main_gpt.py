@@ -17,11 +17,13 @@ import numpy as np
 import torch
 import transformers
 
+from openai import OpenAI
 from config import args
 from contriever_config import c_args
 from collections import Counter
 from utils import write_json, print_now, load_data, print_exp, mkpath
-from source.model.llama2_predict import predict, model_init
+# from source.model.llama2_predict import predict, model_init
+from source.model.gpt3_predict import predict
 
 from transformers import LlamaTokenizer, LlamaForCausalLM, AutoConfig
 
@@ -82,25 +84,6 @@ def load_contriever():
     print(f"Loading model from: {c_args.model_name_or_path}")
     model, tokenizer, _ = retrieval_contriever.src.contriever.load_retriever(c_args.model_name_or_path)
     return model, tokenizer
-    # model.eval()
-    # model = model.cuda()
-    # if not c_args.no_fp16:
-    #     model = model.half()
-
-    # sentences = [
-    #     "Where was Marie Curie born?",
-    #     "Maria Sklodowska, later known as Marie Curie, was born on November 7, 1867.",
-    #     "Born in Paris on 15 May 1859, Pierre Curie was the son of Eugène Curie, a doctor of French Catholic origin from Alsace."
-    # ]
-
-    # # Apply tokenizer
-    # inputs = tokenizer(sentences, padding=True, truncation=True, return_tensors='pt')
-    # # Compute token embeddings
-    # outputs = model(**inputs)
-    # score1 = outputs[0] @ outputs[1]
-    # score2 = outputs[0] @ outputs[2]
-    # print(score1)
-    # print(score2)
 
 
 def load_passages_id_map():
@@ -155,7 +138,7 @@ def problem_solving(input, iter, SKM, PRM, TDM, contriever, contriever_tokenizer
         return "unknow"
     if SKM.find_known(input[0], input[1]):
         prompt = "Give the answer to the question: "
-        answer = predict(args, input[0] + prompt + input[1], base_model, tokenizer)
+        answer = predict(args, input[0] + prompt + input[1])
         return answer
     m_docs, m_scores = beam_retrieve(input, contriever, contriever_tokenizer, passage_id_map, index)
     r_docs = []
@@ -168,7 +151,7 @@ def problem_solving(input, iter, SKM, PRM, TDM, contriever, contriever_tokenizer
         for idx, doc in enumerate(r_docs):
             ref = ref + "\nPragraphs " + str(idx) + ":" + doc["text"]
         ref = ref + "\nUse the knowledge from the relevant paragraphs, give the answer to the question."
-        answer = predict(args, input[0] + ref + input[1], base_model, tokenizer)
+        answer = predict(args, input[0] + ref + input[1])
         return answer
     TDM.decompose()
     sub_qas = []
@@ -181,7 +164,7 @@ def problem_solving(input, iter, SKM, PRM, TDM, contriever, contriever_tokenizer
         sub_str = sub_str + "\nsub_question " + idx + ": " + sub_qa[0]
         sub_str = sub_str + "\nsub_question " + idx + ": " + sub_qa[1]
     sub_str = sub_str + "\nBase on the sub-question answer. give the answer to the origin question."
-    answer = predict(args, input[0] + sub_str + input[1], base_model, tokenizer)
+    answer = predict(args, input[0] + sub_str + input[1])
     return answer
 
 def run_llama(dataset, SKM, PRM, TDM, contriever, contriever_tokenizer, base_model, tokenizer, passage_id_map, index):
@@ -198,10 +181,10 @@ def run_llama(dataset, SKM, PRM, TDM, contriever, contriever_tokenizer, base_mod
 if __name__ == '__main__':
     print_exp(args)
     print_exp(c_args)
-    base_model, tokenizer = model_init(args.base_model_path)
+    # base_model, tokenizer = model_init(args.base_model_path)
     contriever, contriever_tokenizer = load_contriever()
     dataset = load_dataset(args.data_path)
     passage_id_map, index = load_passages_id_map()
     SKM, PRM, TDM = llama_model_init()
-    answer = run_llama(dataset, SKM, PRM, TDM, contriever, base_model, passage_id_map, index)
+    answer = run_llama(dataset, SKM, PRM, TDM, contriever, passage_id_map, index)
     # print(answer)

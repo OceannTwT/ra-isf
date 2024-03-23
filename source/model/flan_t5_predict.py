@@ -13,7 +13,7 @@ def model_init(args):
         model_path,
         torch_dtype=torch.float16,
     ).to(device)
-    tokenizer = LlamaTokenizer.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
     return model, tokenizer, device
 
 

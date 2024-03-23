@@ -12,8 +12,6 @@ This is the official repository of the paper: [RA-ISF: Learning to Answer and Un
 
 ![Framework of RA-ISF.](ra-isf.png)
 
-🔥 We have released the version 1.0 for llama2_13b base model.
-
 ## 🎯Installation Enviorment
 
 Update your environment for the required dependency. 
@@ -122,19 +120,36 @@ wget https://dl.fbaipublicfiles.com/contriever/embeddings/contriever-msmarco/wik
 
 Modify the `datapath` ,`engine`and `model_path` in [config.py](./config.py) and [contriever_config.py](./contriever_config.py) to match your actual paths of the used datasets. Refer to these file for more config details.
 
+
+### For base model on Llama2-13b: 
+
 ```bash
-python main.py --engine "llama2-13b"
+python main.py --engine "llama2-13b" \  
       --base_model_path {base_model_path} \
       --self_knowledge_model_path {self_knowledge_model_path} \
       --passage_relevance_model_path {passage_relevance_model_path} \
       --task_decomposition_model_path {task_decomposition_model_path} \
       --data_path {data_path} \
+      --max_length {max_length} \
       --n_docs {Number of documents to retrieve per questions} \
       --model_name_or_path {contriever_model_path} \
       --passages_embedding "wikipedia_embeddings/*" \
 ```
 
+### For base model on gpt3.5: 
 
+```bash
+python main_gpt.py --engine "gpt-3.5" \
+      --api_key {yuor_api_key} \
+      --self_knowledge_model_path {self_knowledge_model_path} \
+      --passage_relevance_model_path {passage_relevance_model_path} \
+      --task_decomposition_model_path {task_decomposition_model_path} \
+      --data_path {data_path} \
+      --max_length {max_length} \
+      --n_docs {Number of documents to retrieve per questions} \
+      --model_name_or_path {contriever_model_path} \
+      --passages_embedding "wikipedia_embeddings/*" \
+```
 
 ## 📊Evaluation results
 
@@ -147,6 +162,14 @@ python main.py --engine "llama2-13b"
 <!-- ![result.png](./evaluation.png) -->
 
 Results showed that our method achieved SOTA on four out of five datasets, with an average improvement of +1.9 compared to the best-performing method.
+
+## 🛠️Update logs
+
+
+[24/03/24] 🔥 We have released the version 1.0.1 for gpt-3.5-turbo-instruct base model.
+
+[24/03/21] 🔥 We have released the version 1.0.0 for llama2_13b base model.
+
 
 ## 🔗Citation
 

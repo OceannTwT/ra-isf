@@ -140,7 +140,7 @@ python main.py --engine "llama2-13b" \
 
 ```bash
 python main_gpt.py --engine "gpt-3.5" \
-      --api_key {yuor_api_key} \
+      --api_key {your_api_key} \
       --self_knowledge_model_path {self_knowledge_model_path} \
       --passage_relevance_model_path {passage_relevance_model_path} \
       --task_decomposition_model_path {task_decomposition_model_path} \

@@ -165,6 +165,7 @@ Results showed that our method achieved SOTA on four out of five datasets, with 
 
 ## 🛠️Update logs
 
+[24/05/17] 🔥 We are happy to announce that RA-ISF has been accepted to ACL Findings 2024! 
 
 [24/03/24] 🔥 We have released the version 1.0.1 for gpt-3.5-turbo-instruct base model.
 

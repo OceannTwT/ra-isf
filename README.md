@@ -178,9 +178,24 @@ If you use this codebase, or RA-ISF inspires your work, we would greatly appreci
 
 ```bibtex
 
-@article{liu2024ra,
-  title={RA-ISF: Learning to Answer and Understand from Retrieval Augmentation via Iterative Self-Feedback},
-  author={Liu, Yanming and Peng, Xinyue and Zhang, Xuhong and Liu, Weihao and Yin, Jianwei and Cao, Jiannan and Du, Tianyu},
-  journal={arXiv preprint arXiv:2403.06840},
-  year={2024}
+@inproceedings{liu-etal-2024-ra,
+    title = "{RA}-{ISF}: Learning to Answer and Understand from Retrieval Augmentation via Iterative Self-Feedback",
+    author = "Liu, Yanming  and
+      Peng, Xinyue  and
+      Zhang, Xuhong  and
+      Liu, Weihao  and
+      Yin, Jianwei  and
+      Cao, Jiannan  and
+      Du, Tianyu",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Findings of the Association for Computational Linguistics ACL 2024",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand and virtual meeting",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-acl.281",
+    pages = "4730--4749",
+    abstract = "Large language models (LLMs) demonstrate exceptional performance in numerous tasks but still heavily rely on knowledge stored in their parameters. Moreover, updating this knowledge incurs high training costs. Retrieval-augmented generation (RAG) methods address this issue by integrating external knowledge. The model can answer questions it couldn{'}t previously by retrieving knowledge relevant to the query. This approach improves performance in certain scenarios for specific tasks. However, if irrelevant texts are retrieved, it may impair model performance. In this paper, we propose Retrieval Augmented Iterative Self-Feedback (RA-ISF), a framework that iteratively decomposes tasks and processes them in three submodules to enhance the model{'}s problem-solving capabilities. Experiments show that our method outperforms existing benchmarks, performing well on models like GPT3.5, Llama2, significantly enhancing factual reasoning capabilities and reducing hallucinations.",
 }
